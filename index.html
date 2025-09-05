@@ -1,10 +1,133 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Botão Teste</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem Aleatória</title>
+    <style>
+        /* Página com tema girassol */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #FFD700, #FFA500);
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Estilo do botão */
+        #mensagemBtn {
+            padding: 20px 40px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, #FFB347, #FFCC33);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #mensagemBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Pop-up */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #FFF8DC;
+            border: 3px solid #FFA500;
+            border-radius: 15px;
+            padding: 30px 50px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            z-index: 1000;
+        }
+
+        /* Botão fechar do pop-up */
+        #closeBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: #FFA500;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #closeBtn:hover {
+            background: #FF8C00;
+        }
+
+        /* Fundo escurecido quando o pop-up está aberto */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: 500;
+        }
+    </style>
 </head>
 <body>
-  <button>Clique aqui</button>
+
+    <button id="mensagemBtn">Descubra a sua mensagem</button>
+
+    <div id="overlay"></div>
+
+    <div id="popup">
+        <div id="mensagemTexto"></div>
+        <button id="closeBtn">Fechar</button>
+    </div>
+
+    <script>
+        const frases = [
+            "Você nao esta sozinho",
+            "Coisas boas estão por vir",
+            "Tenha um ótimo dia"
+        ];
+
+        const btn = document.getElementById('mensagemBtn');
+        const popup = document.getElementById('popup');
+        const mensagemTexto = document.getElementById('mensagemTexto');
+        const closeBtn = document.getElementById('closeBtn');
+        const overlay = document.getElementById('overlay');
+
+        btn.addEventListener('click', () => {
+            // Escolhe uma frase aleatória
+            const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+            mensagemTexto.textContent = fraseAleatoria;
+
+            // Mostra o pop-up e o overlay
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    </script>
+
 </body>
 </html>
+
