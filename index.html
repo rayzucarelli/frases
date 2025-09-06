@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mensagem Aleatória</title>
     <style>
-        /* Página com tema girassol */
+        /* Página com fundo suave de girassol */
         body {
             margin: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, #FFD700, #FFA500);
+            background-color: #FFF8DC;
             font-family: 'Arial', sans-serif;
         }
 
@@ -108,11 +108,8 @@
         const overlay = document.getElementById('overlay');
 
         btn.addEventListener('click', () => {
-            // Escolhe uma frase aleatória
             const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
             mensagemTexto.textContent = fraseAleatoria;
-
-            // Mostra o pop-up e o overlay
             popup.style.display = 'block';
             overlay.style.display = 'block';
         });
@@ -130,4 +127,3 @@
 
 </body>
 </html>
-
